@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --watchAll=false --bail",
+    "test": "react-scripts test --env=jsdom --watchAll=false --bail --coverage",
     "test:coverage": "react-scripts test --coverage --watchAll=false",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "prepare": "husky install"
