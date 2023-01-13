@@ -23,8 +23,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
+    "test": "react-scripts test --env=jsdom --watchAll=false --bail",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -40,12 +41,21 @@
       "react/react-in-jsx-scope": "off",
       "semi": "error",
       "eol-last": "error",
-      "no-multiple-empty-lines": ["error", {
-        "max": 1,
-        "maxEOF": 0
-      }],
-      "object-curly-spacing": ["error", "always"],
-      "indent": ["error", 2],
+      "no-multiple-empty-lines": [
+        "error",
+        {
+          "max": 1,
+          "maxEOF": 0
+        }
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "indent": [
+        "error",
+        2
+      ],
       "tailwindcss/classnames-order": "error",
       "tailwindcss/no-custom-classname": "warn",
       "tailwindcss/no-contradicting-classname": "error"
@@ -70,6 +80,7 @@
     "eslint-plugin-react": "^7.32.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-tailwindcss": "^3.8.0",
+    "husky": "^8.0.3",
     "tailwindcss": "^3.2.4"
   }
 }
