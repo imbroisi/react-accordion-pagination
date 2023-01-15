@@ -1,14 +1,10 @@
-import { Container } from './styles';
+import FarmerTable from 'components/FarrmerTable';
+import { Container } from './cels';
 
-const App = () => {
-  return (
-    <>
-      <Container>
-        <b>Learn React</b>
-        <div>ok!</div>
-      </Container>
-    </>
-  );
-};
+const App = () => (
+  <Container>
+    <FarmerTable />
+  </Container>
+);
 
 export default App;

@@ -1,7 +1,7 @@
 import { ChildrenProps } from 'interfaces';
 
 export const Container = ({ children }: ChildrenProps) => (
-  <h1 className="text-3xl font-bold underline">
+  <div className="mt-16 flex w-full flex-col items-center">
     {children}
-  </h1>
+  </div>
 );
