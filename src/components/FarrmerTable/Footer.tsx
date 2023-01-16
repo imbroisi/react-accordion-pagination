@@ -1,5 +1,11 @@
 const Footer = () => (
-  <div className="p-4">
+  <div className="
+    w-full
+    rounded-b-xl
+    border-2
+    border-neutral-400
+    p-4
+  ">
     Footer
   </div>
 );

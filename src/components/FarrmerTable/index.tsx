@@ -3,22 +3,18 @@ import Content from "./Content";
 import Footer from "./Footer";
 import Header from "./Header";
 
+const headerLabels = [
+  'Farmer',
+  'Amount Requested',
+  'Status',
+  'Due Date',
+  'Actions',
+];
+
 const FarmerTable = () => {
-  const headerLabels: string[] = [
-    'Farmer',
-    'Amount Requested',
-    'Status',
-    'Due Date',
-    'Actions',
-  ];
-
-  // const fieldsLabels = [
-
-  // ];
-
   return (
     <Container>
-      <Header labels={headerLabels}/>
+      <Header labels={headerLabels} />
       <Content />
       <Footer />
     </Container>

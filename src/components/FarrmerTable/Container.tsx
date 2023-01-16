@@ -1,5 +1,5 @@
 import { ChildrenProps } from 'interfaces';
-import { BORDER_COLOR } from './styles';
+// import { BORDER_COLOR } from './styles';
 
 const Container = ({ children }: ChildrenProps) => (
   <div className={`
@@ -7,10 +7,6 @@ const Container = ({ children }: ChildrenProps) => (
     flex
     flex-col
     items-center
-    overflow-hidden
-    rounded-xl
-    border-2
-    ${BORDER_COLOR}
     bg-neutral-900
   `}>
     {children}
