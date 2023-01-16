@@ -5,11 +5,17 @@ interface Props {
   children: ReactNode | ReactNode[],
   open: boolean | undefined,
   onChevronClick: (isOpen: boolean) => void
-  index: number,
   subItems: (ReactNode | ReactNode[])[],
+  subItemsHeader: ReactNode | ReactNode[],
 } 
 
-const AccordionItem = ({ open, onChevronClick, children, subItems, index }: Props) => {
+const AccordionItem = ({
+  open,
+  onChevronClick,
+  children,
+  subItems,
+  subItemsHeader,
+}: Props) => {
   return (
     <div>
       <div className={`
@@ -31,7 +37,7 @@ const AccordionItem = ({ open, onChevronClick, children, subItems, index }: Prop
           {children}
         </div>
       </div>
-      <AccordionSubitem subItems={subItems} open={open} />
+      <AccordionSubitem subItems={subItems} subItemsHeader={subItemsHeader} open={open} />
     </div>
   );
 };

@@ -14,7 +14,7 @@ const Header = ({ labels }: HeaderProps) => {
       ${BORDER_COLOR}
       overflow-hidden
       rounded-t-xl
-      bg-neutral-700
+      bg-slate-800
       p-4
     `}>
       <div />

@@ -9,6 +9,7 @@ interface Data {
   item: (ReactNode | ReactNode[])[],
   id: string,
   subItems: (ReactNode | ReactNode[])[],
+  subItemsHeader: ReactNode | ReactNode[],
 } 
 
 interface Props {
@@ -18,33 +19,22 @@ interface Props {
 const Accordion = ({ data }: Props) => {
   const [openItem, setOpenItem] = useState(-1);
 
-  console.log('--->> data', data);
-  console.log('--->> Math.random().toString()', Math.random().toString());
-
   return (
-    <div>
-      <div>
-        {
-          data.map((tmp: any, index: number) => {
-            console.log('--->>> tmp', tmp);
-
-            const { item, id, subItems } = tmp;
-            console.log('--->>> item', item);
-
-            return(
-              <AccordionItem
-                key={id}
-                open={openItem === index}
-                onChevronClick={(isOpen) => setOpenItem (isOpen ? -1 : index)}
-                index={index}
-                subItems={subItems}
-              >
-                {item}
-              </AccordionItem>
-            );})
-        }
-      </div>
-    </div>
+    <>
+      {
+        data.map(({ item, id, subItems, subItemsHeader }, index: number) => (
+          <AccordionItem
+            key={id}
+            open={openItem === index}
+            onChevronClick={(isOpen) => setOpenItem (isOpen ? -1 : index)}
+            subItems={subItems}
+            subItemsHeader={subItemsHeader}
+          >
+            {item}
+          </AccordionItem>
+        ))
+      }
+    </>
   );
 };
 

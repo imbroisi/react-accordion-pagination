@@ -144,6 +144,7 @@ const Content = () => {
         <i key={totalNormalized}>{totalNormalized}</i>,
         <b key={dueDate}>{dueDate}</b>,
       ],
+      subItemsHeader: (<>Aqui Subtitle header</>),
       subItems: creditRequests.map((cr) => {
         return (
           <b key={cr.id}>
