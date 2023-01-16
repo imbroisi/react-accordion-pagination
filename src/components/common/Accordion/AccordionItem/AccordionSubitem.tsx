@@ -4,24 +4,31 @@ interface Props {
   subItems: (ReactNode | ReactNode[])[]
   open: boolean | undefined,
 }
-
-//       ${open ? '': 'hidden'}
-//       ${open ? 'scale-1' : 'scale-0'}
+interface OpenHeight {
+  [n: number]: string;
+}
+const OPEN_HEIGHT_MAP: OpenHeight = {
+  1: 'h-[50px]',
+  2: 'h-[100px]',
+  3: 'h-[150px]',
+  4: 'h-[200px]',
+};
 
 const AccordionSubitem = ({ subItems, open }: Props) => {
-  const openHeight = `h-[${subItems.length * 50}px]`; 
+  const openHeight = OPEN_HEIGHT_MAP[subItems.length];
+ 
   return (
     <div className={`
-      h-0
+      ${open ? openHeight : 'h-0'}
       transform
       overflow-hidden
       border-x-2
       border-t
       border-neutral-400
+      bg-slate-700
       transition-height
       duration-500
       ease-in-out
-      ${open ? openHeight : 'h-0'}
     `}>
       {
         subItems.map((subItem, index) => {
