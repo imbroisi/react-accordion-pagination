@@ -1,8 +1,5 @@
-import Accordion from "components/common/Accordion";
-// import { useState } from "react";
-import { normalizeCurrency } from "utils";
-// import { GRID_COLS, BORDER_COLOR } from "../styles";
-// import SubItems from "./SubItems";
+import Accordion from "lib/Accordion";
+import { transformPayload } from "./transformPayload";
 
 const data = {
   "totalInPage": 100,
@@ -15,7 +12,7 @@ const data = {
         "firstName": "Evan",
         "lastName": "Boyle"
       },
-      "status": "approved",
+      "status": "ready",
       "credit_requests": [
         {
           "id": "0437c1ec-39ec-4eae-abe8-34626e112709",
@@ -115,47 +112,7 @@ const data = {
 };
 
 const Content = () => {
-  // const [open, setOpen] = useState(-1);
-
-  // const handleOnChevronClick = (isOpen: boolean, index: number) => {
-  //   setOpen(isOpen ? -1 : index);
-  // };
-
-  const accordionData = data.items.map(({
-    id,
-    farmer,
-    credit_requests: creditRequests,
-    status,
-  }, index) => {
-    const dueDate = new Date(
-      creditRequests[creditRequests.length - 1].due_date
-    ).toISOString().substring(0, 10);
-    
-    const totalRaw = creditRequests.reduce((a, creditRequests) => (
-      a + creditRequests.amount), 0);
-  
-    const totalNormalized = normalizeCurrency(totalRaw);
-
-    // const actions = <b>...</b>;
-
-    const items = {
-      id,
-      item: [
-        <i key={totalNormalized}>{totalNormalized}</i>,
-        <b key={dueDate}>{dueDate}</b>,
-      ],
-      subItemsHeader: (<>Aqui Subtitle header</>),
-      subItems: creditRequests.map((cr) => {
-        return (
-          <b key={cr.id}>
-            {cr.purpose}
-          </b>
-        );
-      }),      
-    };
-
-    return items;
-  });
+  const accordionData = transformPayload(data.items);
 
   return (
     <div className="w-full">

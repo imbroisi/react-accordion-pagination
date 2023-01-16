@@ -1,14 +1,18 @@
-import { BORDER_COLOR, GRID_COLS } from "./styles";
+import { BORDER_COLOR, GRID_COLS_HEADER } from "./styles";
 
-interface HeaderProps {
-  labels: string[],
-}
+const headerLabels = [
+  'Farmer',
+  'Amount Requested',
+  'Status',
+  'Due Date',
+  'Actions',
+];
 
-const Header = ({ labels }: HeaderProps) => {
+const Header = () => {
   return (
     <div className={`
       grid
-      ${GRID_COLS}
+      ${GRID_COLS_HEADER}
       border-2
       border-b-0
       ${BORDER_COLOR}
@@ -16,10 +20,11 @@ const Header = ({ labels }: HeaderProps) => {
       rounded-t-xl
       bg-slate-800
       p-4
+      font-bold
     `}>
       <div />
       {
-        labels.map((label) => (
+        headerLabels.map((label) => (
           <div key={label} className="flex justify-center whitespace-nowrap">
             {label}
           </div>

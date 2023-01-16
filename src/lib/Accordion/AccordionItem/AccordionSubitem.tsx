@@ -24,14 +24,24 @@ const AccordionSubitem = ({ subItems, subItemsHeader, open }: Props) => {
       transform
       overflow-hidden
       border-x-2
-
       border-neutral-400
-      pl-12
+      pl-20
       transition-height
       duration-500
       ease-in-out
     `}>
-      <div className="flex h-12 items-center border-l border-t border-b border-neutral-400 bg-slate-800">
+      <div className="
+        flex
+        h-12
+        items-center
+        rounded-tl-md
+        border
+        border-r-0
+        border-neutral-400
+        bg-slate-800
+        font-bold
+        "
+      >
         {subItemsHeader}
       </div>
       {
@@ -50,7 +60,6 @@ const AccordionSubitem = ({ subItems, subItemsHeader, open }: Props) => {
                 bg-slate-700
                 ${index !== 0 ? 'border-t' : ''}
                 ${index === subItems.length - 1 ? 'border-b' : ''}
-                
               `}
             >
               {subItem}

@@ -1,44 +1,48 @@
-import { ReactNode, useState } from "react";
-import AccordionItem from "./AccordionItem";
+import { ReactNode } from "react";
+import AccordionSubitem from "./AccordionSubitem";
 
-// interface Items {
-//   items: (ReactNode | ReactNode[])[]
-// }
-
-interface Data {
-  item: (ReactNode | ReactNode[])[],
-  id: string,
+interface Props {
+  children: ReactNode | ReactNode[],
+  open: boolean | undefined,
+  onChevronClick: (isOpen: boolean) => void
   subItems: (ReactNode | ReactNode[])[],
   subItemsHeader: ReactNode | ReactNode[],
 } 
 
-interface Props {
-  data: Data[]
-} 
-
-const Accordion = ({ data }: Props) => {
-  const [openItem, setOpenItem] = useState(-1);
-
+const AccordionItem = ({
+  open,
+  onChevronClick,
+  children,
+  subItems,
+  subItemsHeader,
+}: Props) => {
   return (
-    <>
-      {
-        data.map(({ item, id, subItems, subItemsHeader }, index: number) => (
-          <AccordionItem
-            key={id}
-            open={openItem === index}
-            onChevronClick={(isOpen) => setOpenItem (isOpen ? -1 : index)}
-            subItems={subItems}
-            subItemsHeader={subItemsHeader}
+    <div>
+      <div className={`
+        flex
+        h-14
+        border-2
+        border-b-0
+        border-neutral-400
+      `}>
+        <div className="flex w-12 items-center justify-center">
+          <div
+            className="cursor-pointer"
+            onClick={() => onChevronClick(!!open)}
           >
-            {item}
-          </AccordionItem>
-        ))
-      }
-    </>
+            {open ? 'A': 'V'}
+          </div>
+        </div>
+        <div className={`flex items-center justify-center ${open ? 'font-bold' : ''}`}>
+          {children}
+        </div>
+      </div>
+      <AccordionSubitem subItems={subItems} subItemsHeader={subItemsHeader} open={open} />
+    </div>
   );
 };
 
-export default Accordion;
+export default AccordionItem;
 
 // import { ReactNode } from "react";
 
@@ -46,14 +50,14 @@ export default Accordion;
 
 // interface ContentItemProps {
 //   children?: ReactNode,
-//   children: string[] | ReactNode[],
+//   items: string[] | ReactNode[],
 //   gridCols: string,
 //   borderColor: string,
 //   open?: boolean,
 //   onChevronClick?: (isOpen: boolean) => void
 // } 
 
-// const Accordion = ({ children, open, onChevronClick, children, gridCols, borderColor }: ContentItemProps) => {
+// const Accordion = ({ children, open, onChevronClick, items, gridCols, borderColor }: ContentItemProps) => {
 //   console.log('--> onChevronClick', onChevronClick);
 //   return (
 //     <div>
@@ -78,7 +82,7 @@ export default Accordion;
 //           )
 //         }
 //         {
-//           children.map((item) => (
+//           items.map((item) => (
 //             <div key={item?.toString()} className={itemClass}>
 //               {item}
 //             </div>
