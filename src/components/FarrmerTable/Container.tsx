@@ -1,7 +1,10 @@
-import { ChildrenProps } from 'interfaces';
-// import { BORDER_COLOR } from './styles';
+import { ReactNode } from "react";
 
-const Container = ({ children }: ChildrenProps) => (
+interface ContainerProps {
+  children: ReactNode | ReactNode[],
+}
+
+const Container = ({ children }: ContainerProps) => (
   <div className={`
     mt-16
     flex

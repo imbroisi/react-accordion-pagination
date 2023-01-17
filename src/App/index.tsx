@@ -1,10 +1,9 @@
 import FarmerTable from 'components/FarrmerTable';
-import { Container } from './cels';
 
 const App = () => (
-  <Container>
+  <div className="mt-16 flex w-full flex-col items-center">
     <FarmerTable />
-  </Container>
+  </div>
 );
 
 export default App;

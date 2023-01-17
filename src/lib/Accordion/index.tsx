@@ -1,24 +1,28 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import AccordionItem from "./AccordionItem";
 
-interface Data {
+export interface AccordionContentProps {
   id: string,
-  item: (ReactNode | ReactNode[])[],
+  item: ReactNode | (ReactNode | ReactNode[])[],
   subItems: (ReactNode | ReactNode[])[],
   subItemsHeader: ReactNode | ReactNode[],
 } 
 
 export interface AccordionProps {
-  data: Data[]
+  content: AccordionContentProps[]
 } 
 
-const Accordion = ({ data }: AccordionProps) => {
+const Accordion = ({ content }: AccordionProps) => {
   const [openItem, setOpenItem] = useState<number>(-1);
+
+  useEffect(() => {
+    setOpenItem(-1);
+  },[content]);
 
   return (
     <div className="border-b-2 border-neutral-400">
       {
-        data.map(({ item, id, subItems, subItemsHeader }: Data, index: number) => (
+        content.map(({ item, id, subItems, subItemsHeader }, index: number) => (
           <AccordionItem
             key={id}
             open={openItem === index}
