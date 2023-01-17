@@ -4,9 +4,10 @@ import AccordionSubitem from "./AccordionSubitem";
 interface Props {
   children: ReactNode | ReactNode[],
   open: boolean | undefined,
-  onChevronClick: (isOpen: boolean) => void
+  onChevronClick: () => void
   subItems: (ReactNode | ReactNode[])[],
   subItemsHeader: ReactNode | ReactNode[],
+  allClosed: boolean,
 } 
 
 const AccordionItem = ({
@@ -15,26 +16,27 @@ const AccordionItem = ({
   children,
   subItems,
   subItemsHeader,
+  allClosed,
 }: Props) => {
   return (
     <div>
       <div className={`
-        flex
-        h-14
         border-2
         border-b-0
         border-neutral-400
       `}>
-        <div className="flex w-12 items-center justify-center">
-          <div
-            className="cursor-pointer"
-            onClick={() => onChevronClick(!!open)}
-          >
-            {open ? 'A': 'V'}
+        <div className={`flex h-14 ${open || allClosed ? '' : 'opacity-40'}`}>
+          <div className={`flex w-12 items-center justify-center`}>
+            <div
+              className="cursor-pointer"
+              onClick={onChevronClick}
+            >
+              {open ? 'A': 'V'}
+            </div>
           </div>
-        </div>
-        <div className={`flex items-center justify-center ${open ? 'font-bold' : ''}`}>
-          {children}
+          <div className={`flex items-center justify-center`}>
+            {children}
+          </div>
         </div>
       </div>
       <AccordionSubitem subItems={subItems} subItemsHeader={subItemsHeader} open={open} />

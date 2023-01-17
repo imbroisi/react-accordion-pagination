@@ -9,10 +9,10 @@ interface OpenHeight {
   [n: number]: string;
 }
 const OPEN_HEIGHT_MAP: OpenHeight = {
-  1: 'h-[102px]',
-  2: 'h-[152px]',
-  3: 'h-[200px]',
-  4: 'h-[250px]',
+  1: 'h-[112px]',
+  2: 'h-[162px]',
+  3: 'h-[210px]',
+  4: 'h-[260px]',
 };
 
 const AccordionSubitem = ({ subItems, subItemsHeader, open }: Props) => {
@@ -57,7 +57,7 @@ const AccordionSubitem = ({ subItems, subItemsHeader, open }: Props) => {
                 overflow-hidden
                 border-l
                 border-neutral-400
-                bg-slate-700
+                bg-black
                 ${index !== 0 ? 'border-t' : ''}
                 ${index === subItems.length - 1 ? 'border-b' : ''}
               `}

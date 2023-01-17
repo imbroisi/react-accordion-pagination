@@ -42,6 +42,17 @@ export const transformPayload = (items: Item[]): any => (
   }) => {
     const statusColor = STATUS_COLORS[status] || '';
 
+    // Transform due-date to yyyy-mm-dd (ISO)
+    const dueDate = new Date(
+      creditRequests[creditRequests.length - 1].due_date
+    ).toISOString().substring(0, 10);
+
+    // calcule total amouts and normalize format
+    const totalRaw = creditRequests.reduce((a, creditRequests) => (
+      a + creditRequests.amount), 0
+    );
+    const totalNormalized = normalizeCurrency(totalRaw);
+
     const ItemContent = () => (
       <div key={id} className={`
         grid
@@ -109,29 +120,11 @@ export const transformPayload = (items: Item[]): any => (
         );
       });
 
-    // Transform due-date to yyyy-mm-dd (ISO)
-    const dueDate = new Date(
-      creditRequests[creditRequests.length - 1].due_date
-    ).toISOString().substring(0, 10);
-
-    // calcule total amouts and normalize format
-    const totalRaw = creditRequests.reduce((a, creditRequests) => (
-      a + creditRequests.amount), 0
-    );
-    const totalNormalized = normalizeCurrency(totalRaw);
-
     return {
       id,
       item: <ItemContent />,
       subItemsHeader: <SubItemHeader />,
       subItems: SubItemContent(),
-      // creditRequests.map((cr) => {
-      //   return (
-      //     <b key={cr.id}>
-      //       {cr.purpose}
-      //     </b>
-      //   );
-      // }),
     };
   })
 );

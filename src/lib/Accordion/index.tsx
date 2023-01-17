@@ -1,10 +1,6 @@
 import { ReactNode, useState } from "react";
 import AccordionItem from "./AccordionItem";
 
-// interface Items {
-//   items: (ReactNode | ReactNode[])[]
-// }
-
 interface Data {
   id: string,
   item: (ReactNode | ReactNode[])[],
@@ -17,16 +13,17 @@ export interface AccordionProps {
 } 
 
 const Accordion = ({ data }: AccordionProps) => {
-  const [openItem, setOpenItem] = useState(-1);
+  const [openItem, setOpenItem] = useState<number>(-1);
 
   return (
     <div className="border-b-2 border-neutral-400">
       {
-        data.map(({ item, id, subItems, subItemsHeader }, index: number) => (
+        data.map(({ item, id, subItems, subItemsHeader }: Data, index: number) => (
           <AccordionItem
             key={id}
             open={openItem === index}
-            onChevronClick={(isOpen) => setOpenItem (isOpen ? -1 : index)}
+            allClosed={openItem === -1}
+            onChevronClick={() => setOpenItem (openItem === index ? -1 : index)}
             subItems={subItems}
             subItemsHeader={subItemsHeader}
           >

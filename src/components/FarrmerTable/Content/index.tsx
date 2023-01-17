@@ -9,6 +9,24 @@ const data = {
     {
       "id": "f873e8be-d489-4259-8c94-417bc4f136f0",
       "farmer": {
+        "firstName": "Roger",
+        "lastName": "Federer"
+      },
+      "status": "ready",
+      "credit_requests": [
+        {
+          "id": "c2d7af43-b152-40b1-94dc-c7379496e1e7",
+          "farmer_id": "1055a0da-2317-441d-8f94-65f0fb6e1b12",
+          "purpose": ["seeds"],
+          "season": "Don't You Want Me",
+          "due_date": "2023-10-31T17:04:18.492Z",
+          "amount": 820815638.52
+        }
+      ]
+    },
+    {
+      "id": "f873e8be-d489-4259-8c94-417bc4f136f0",
+      "farmer": {
         "firstName": "Evan",
         "lastName": "Boyle"
       },
