@@ -1,0 +1,21 @@
+// import { render, screen } from '@testing-library/react';
+// import App from '../Accordion';
+
+// const traiveData = [
+
+// ];
+
+// const content = traiveData.map(({ id, itemData, subItemsData }) => {
+//   return {
+//     id,
+//     item: <ItemFormatter id={id} data={itemData} />,
+//     subItems: subItemsData.map((data: any) => <SubitemFormatter key={data[0]} data={data} />),
+//     subItemsHeader: <SubitemHeader />,
+//   };
+// });
+
+// test('renders Accordion', () => {
+//   render(<App />);
+//   const linkElement = screen.getByText(/farmer/i);
+//   expect(linkElement).toBeInTheDocument();
+// });

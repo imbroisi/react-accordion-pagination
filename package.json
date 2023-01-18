@@ -4,7 +4,7 @@
   "private": true,
   "engineStrict": true,
   "engines": {
-    "node": ">=18.0.0 <19"
+    "node": ">=16.0.0 <19"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
