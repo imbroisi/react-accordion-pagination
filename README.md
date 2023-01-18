@@ -4,6 +4,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Specs of the project for development may be seen at [/dev-info](/dev-info/) directory.
 
+## Node version
+
+The project can be done with Node 18, but as AWS Amplify does not yet use version 18, it is recommended to use Node 16.\
+AWS Amplify is the AWS service to deploy the page - see details below.
+
 ## Instalation and running
 
 ```bash

@@ -35,7 +35,7 @@ const AccordionItem = ({
             {
               open
                 ? <UpArrow onClick={onChevronClick} />
-                : <DownArrow onClick={onChevronClick} />
+                : <DownArrow data-testid="DownArrow-testid" onClick={onChevronClick} />
             }
           </div>
           <div className={`flex items-center justify-center`}>

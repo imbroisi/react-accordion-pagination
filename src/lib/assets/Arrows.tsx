@@ -5,10 +5,12 @@ interface Props {
   title?: string,
   className?: string,
   disabled?: boolean,
+  'data-testid'?: string,
 }
 
-const MainArrow = ({ className, onClick, title = '', disabled }: Props) => (
-  <RightArrowRaw 
+const MainArrow = ({ className, onClick, title = '', disabled, 'data-testid': dataTestid  }: Props) => (
+  <RightArrowRaw
+    data-testid={dataTestid}
     className={`
       w-6
       ${className || ''}
@@ -28,9 +30,9 @@ export const LeftArrow = ({ className = '', onClick, title, disabled }: Props) =
 );
 
 export const DownArrow = ({ className = '', onClick, title }: Props) => (
-  <MainArrow className={`${className} rotate-90`} onClick={onClick} title={title} />
+  <MainArrow data-testid="downarrow-testid" className={`${className} rotate-90`} onClick={onClick} title={title} />
 );
 
 export const UpArrow = ({ className = '', onClick, title }: Props) => (
-  <MainArrow className={`${className} -rotate-90`} onClick={onClick} title={title} />
+  <MainArrow data-testid="uparrow-testid" className={`${className} -rotate-90`} onClick={onClick} title={title} />
 );

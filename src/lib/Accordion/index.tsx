@@ -40,6 +40,7 @@ const Accordion = ({ content }: AccordionProps) => {
         content.map(({ item, id, subItems, subItemsHeader }, index: number) => (
           <div key={id} className="relative">
             <AccordionItem
+              data-testid="accordionitem-testid"
               open={openItem === index}
               allClosed={openItem === -1}
               onChevronClick={() => setOpenItem (openItem === index ? -1 : index)}
@@ -51,7 +52,9 @@ const Accordion = ({ content }: AccordionProps) => {
             </AccordionItem>
             {
               openMenu === index && (
-                <div ref={menuRef} className="
+                <div
+                  ref={menuRef}
+                  className="
                   absolute
                   right-16
                   top-8

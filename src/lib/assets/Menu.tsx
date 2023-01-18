@@ -8,7 +8,8 @@ interface Props {
 }
 
 export const MenuIcon = ({ className, onClick, title = '', disabled }: Props) => (
-  <MenuIconRaw 
+  <MenuIconRaw
+    data-testid="menuitem-testid"
     className={`
       w-6
       ${className || ''}
