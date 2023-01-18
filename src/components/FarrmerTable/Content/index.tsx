@@ -3,6 +3,8 @@ import ItemFormatter from "./ItemFormatter";
 import SubitemFormatter from "./SubitemFormatter";
 import SubitemHeader from "./SubitemHeader";
 import { useAPI } from "api/apiContext";
+import Header from "../Header";
+import Footer from "../Footer";
 
 const Content = () => {
   const { traiveData } = useAPI();
@@ -22,9 +24,13 @@ const Content = () => {
   });
 
   return (
-    <div className="w-full">
-      <Accordion content={content} />
-    </div>
+    <>
+      <Header />
+      <div className="w-full">
+        <Accordion content={content} />
+      </div>
+      <Footer />
+    </>
   );
 };
 
