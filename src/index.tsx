@@ -7,6 +7,8 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+console.log('--_>>> process.env.NODE_ENV', process.env.NODE_ENV);
+
 if (process.env.NODE_ENV === 'development') {
   console.log('>>>>> inicializando MSW');
   const { worker } = require('./api/mock/browser');
