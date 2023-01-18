@@ -47,4 +47,4 @@ For the purposes of this challenge, the API in production is also mocked (in the
 
 ## Production Page
 
-You can access the page in produtionat at [https://main.d2mwsb69zg769t.amplifyapp.com](https://main.d2mwsb69zg769t.amplifyapp.com/).
+You can access the page in prodution at [https://main.d2mwsb69zg769t.amplifyapp.com](https://main.d2mwsb69zg769t.amplifyapp.com/).
