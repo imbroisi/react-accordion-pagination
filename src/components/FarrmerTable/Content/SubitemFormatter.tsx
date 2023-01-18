@@ -4,32 +4,27 @@ interface ItemContentProps {
   data: string[],
 }
 
-const ItemFormatter = ({
-  data: [
-    ,
-    season,
-    amount,
-    purpose,
-    dueDate,
-  ]
-}: ItemContentProps) => {
+const ItemFormatter = ({ data }: ItemContentProps) => {
   return (
     <div className={`
       grid
       ${GRID_COLS_SUBITEMS}
     `}>
-      <div className="flex justify-center">
-        {season}
-      </div>
-      <div className="flex justify-center">
-        {amount}
-      </div>
-      <div className="flex justify-center">
-        {purpose}
-      </div>
-      <div className="flex justify-center">
-        {dueDate}
-      </div>
+      {
+        data.map((value, index) => {
+          if (index === 0) {
+            return null;
+          }
+          return (
+            <div
+              key={value}
+              className="flex items-center justify-center text-center"
+            >
+              {value}
+            </div>            
+          );
+        })
+      }
     </div>
   );
 };
