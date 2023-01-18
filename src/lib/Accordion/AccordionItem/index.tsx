@@ -1,10 +1,13 @@
 import { ReactNode } from "react";
 import AccordionSubitem from "./AccordionSubitem";
+import { UpArrow, DownArrow } from 'lib/assets/Arrows';
+import { MenuIcon } from "lib/assets/Menu";
 
 interface Props {
   children: ReactNode | ReactNode[],
   open: boolean | undefined,
   onChevronClick: () => void
+  onMenuOpenClick: () => void
   subItems: (ReactNode | ReactNode[])[],
   subItemsHeader: ReactNode | ReactNode[],
   allClosed: boolean,
@@ -13,6 +16,7 @@ interface Props {
 const AccordionItem = ({
   open,
   onChevronClick,
+  onMenuOpenClick,
   children,
   subItems,
   subItemsHeader,
@@ -21,21 +25,24 @@ const AccordionItem = ({
   return (
     <div>
       <div className={`
+        relative
         border-2
         border-b-0
         border-neutral-400
       `}>
         <div className={`flex h-14 ${open || allClosed ? '' : 'opacity-40'}`}>
           <div className={`flex w-12 items-center justify-center`}>
-            <div
-              className="cursor-pointer"
-              onClick={onChevronClick}
-            >
-              {open ? 'A': 'V'}
-            </div>
+            {
+              open
+                ? <UpArrow onClick={onChevronClick} />
+                : <DownArrow onClick={onChevronClick} />
+            }
           </div>
           <div className={`flex items-center justify-center`}>
             {children}
+          </div>
+          <div className="absolute right-10 flex h-full content-center">
+            <MenuIcon onClick={onMenuOpenClick} disabled={!(allClosed || open)} />
           </div>
         </div>
       </div>
@@ -45,55 +52,3 @@ const AccordionItem = ({
 };
 
 export default AccordionItem;
-
-// import { ReactNode } from "react";
-
-// const itemClass = 'flex justify-center whitespace-nowrap';
-
-// interface ContentItemProps {
-//   children?: ReactNode,
-//   items: string[] | ReactNode[],
-//   gridCols: string,
-//   borderColor: string,
-//   open?: boolean,
-//   onChevronClick?: (isOpen: boolean) => void
-// } 
-
-// const Accordion = ({ children, open, onChevronClick, items, gridCols, borderColor }: ContentItemProps) => {
-//   console.log('--> onChevronClick', onChevronClick);
-//   return (
-//     <div>
-//       <div
-//         className={`
-//           grid
-//           ${gridCols}
-//           border-b-2
-//           ${borderColor}
-//           h-16
-//           content-center
-//           p-3
-//         `}
-//       >
-//         {
-//           onChevronClick && (
-//             <div className={`${itemClass} cursor-pointer`} onClick={() => onChevronClick && onChevronClick(!!open)}>
-//               {
-//                 open ? 'A': 'V'
-//               }
-//             </div>
-//           )
-//         }
-//         {
-//           items.map((item) => (
-//             <div key={item?.toString()} className={itemClass}>
-//               {item}
-//             </div>
-//           ))
-//         }
-//       </div>
-//       {open && children}
-//     </div>
-//   );
-// };
-
-// export default Accordion;

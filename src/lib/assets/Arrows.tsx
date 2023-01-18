@@ -1,4 +1,4 @@
-import { ReactComponent as RightArrowRaw } from './rightArrow.svg';
+import { ReactComponent as RightArrowRaw } from './images/rightArrow.svg';
 
 interface Props {
   onClick?: () => void,
@@ -7,7 +7,7 @@ interface Props {
   disabled?: boolean,
 }
 
-export const MainArrow = ({ className, onClick, title = '', disabled }: Props) => (
+const MainArrow = ({ className, onClick, title = '', disabled }: Props) => (
   <RightArrowRaw 
     className={`
       w-6

@@ -1,7 +1,7 @@
 import FarmerTable from 'components/FarrmerTable';
 
 const App = () => (
-  <div className="mt-16 flex w-full flex-col items-center">
+  <div className="flex w-full flex-col items-center">
     <FarmerTable />
   </div>
 );

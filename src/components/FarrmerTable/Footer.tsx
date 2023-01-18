@@ -1,7 +1,6 @@
-import { useAPI } from 'api/apiContext';
-// import getTraiveData from 'api/getTraiveData';
-import Pagination from 'lib/Pagination/';
 import { useRef } from 'react';
+import { useAPI } from 'api/apiContext';
+import Pagination from 'lib/Pagination/';
 
 const Footer = () => {
   const { getNewPage, totalPages } = useAPI();

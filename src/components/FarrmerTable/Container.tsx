@@ -6,7 +6,7 @@ interface ContainerProps {
 
 const Container = ({ children }: ContainerProps) => (
   <div className={`
-    mt-16
+    mt-8
     flex
     flex-col
     items-center

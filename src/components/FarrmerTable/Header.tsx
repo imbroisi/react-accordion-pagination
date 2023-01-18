@@ -1,4 +1,4 @@
-import { BORDER_COLOR, GRID_COLS_HEADER } from "./styles";
+import { GRID_COLS_HEADER } from "./styles";
 
 const headerLabels = [
   'Farmer',
@@ -13,11 +13,12 @@ const Header = () => {
     <div className={`
       grid
       ${GRID_COLS_HEADER}
-      border-2
-      border-b-0
-      ${BORDER_COLOR}
+      w-full
       overflow-hidden
       rounded-t-xl
+      border-2
+      border-b-0
+      border-neutral-400
       bg-slate-800
       p-4
       font-bold

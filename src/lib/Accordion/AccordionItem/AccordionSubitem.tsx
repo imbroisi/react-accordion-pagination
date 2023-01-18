@@ -39,6 +39,7 @@ const AccordionSubitem = ({ subItems, subItemsHeader, open }: Props) => {
         border-r-0
         border-neutral-400
         bg-slate-800
+        pl-4
         font-bold
         "
       >
@@ -58,6 +59,7 @@ const AccordionSubitem = ({ subItems, subItemsHeader, open }: Props) => {
                 border-l
                 border-neutral-400
                 bg-black
+                pl-4
                 ${index !== 0 ? 'border-t' : ''}
                 ${index === subItems.length - 1 ? 'border-b' : ''}
               `}

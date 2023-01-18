@@ -1,27 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
-import { RightArrow, LeftArrow } from '../assets/Arrows';
+import { RightArrow, LeftArrow } from 'lib/assets/Arrows';
 
 interface PaginationProps {
   total: number,
   onSelect?: (s: number) => void,
 }
-
-const PATTERN = (total: number, selected: number) => {
-  if (total <= 7) {
-    return 'XXXXXXX';
-  }
-
-  if (selected <= 4) {
-    return 'XXXXX_X';
-  }
-
-  if (selected > total - 5) {
-    return 'X_XXXXX';
-  }
-
-  return 'X_XXX_X';
-};
 
 const Pagination = ({ total, onSelect }: PaginationProps) => {
   const [selected, setSelected] = useState(1);
@@ -44,38 +28,34 @@ const Pagination = ({ total, onSelect }: PaginationProps) => {
     }
   }, [selected, onSelect]);
 
-  const pattern = PATTERN(total, selected);
-  let final = Array(7).fill(0);
+  let schema;
+  if (total < 7) {
+    const nullArray = Array(total).fill(null);
+    schema = nullArray.map((_, index) => index + 1);
+  } else {
+    schema = Array(7).fill(null);
+    schema[0] = 1;
+    schema[6] = total;
 
-  console.log('(2) --->>>> selected', selected);
-
-  if (pattern.indexOf('_') === -1) {
-    const nullArray = Array.apply(null, Array(total));
-    final = nullArray.map((item, index) => index + 1);
-  } else if (pattern[1] === '_' && pattern[pattern.length - 2] === '_') {
-    final[0] = 1;
-    final[1] = '...';
-    final[2] = selected - 1;
-    final[3] = selected;
-    final[4] = selected + 1;
-    final[5] = '...';
-    final[6] = total;
-  } else if (pattern[1] === '_') {
-    final[0] = 1;
-    final[1] = '...';
-    final[2] = total - 4;
-    final[3] = total - 3;
-    final[4] = total - 2;
-    final[5] = total - 1;
-    final[6] = total;
-  } else if (pattern[pattern.length - 2] === '_') {
-    final[0] = 1;
-    final[1] = 2;
-    final[2] = 3;
-    final[3] = 4;
-    final[4] = 5;
-    final[5] = '...';
-    final[6] = total;
+    if (selected <= 4) {
+      schema[1] = 2;
+      schema[2] = 3;
+      schema[3] = 4;
+      schema[4] = 5;
+      schema[5] = '...';
+    } else if (selected > total - 5) {
+      schema[1] = '...';
+      schema[2] = total - 4;
+      schema[3] = total - 3;
+      schema[4] = total - 2;
+      schema[5] = total - 1;
+    } else {
+      schema[1] = '...';
+      schema[2] = selected - 1;
+      schema[3] = selected;
+      schema[4] = selected + 1;
+      schema[5] = '...';
+    }
   }
   
   return (
@@ -85,7 +65,7 @@ const Pagination = ({ total, onSelect }: PaginationProps) => {
         disabled={selected === 1}
       />
       {
-        final.map((value, index) => {
+        schema.map((value, index) => {
           const borderColor = isNaN(value)
             ? 'border-transparent'
             : (value === selected ? 'border-white' : 'border-gray-500');
