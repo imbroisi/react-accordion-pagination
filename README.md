@@ -53,3 +53,9 @@ For the purposes of this challenge, the API in production is also mocked (in the
 ## Production Page
 
 You can access the page in prodution at [https://main.d2mwsb69zg769t.amplifyapp.com](https://main.d2mwsb69zg769t.amplifyapp.com/).
+
+## Lighthouse measurements
+
+This is the Google's Lighthouse performance, quality, and correctness of the web app, printed Jan/19/2023.
+
+![Lighthouse](/dev-info/lighthouse.png)
