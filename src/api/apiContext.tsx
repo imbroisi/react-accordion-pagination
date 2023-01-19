@@ -22,14 +22,9 @@ const APIContextProvider = ({ children }: Props)  => {
   
   useEffect(() => {
     (async () => {
-      const response  = await fetch('/traive-data', {
-        method: 'POST',
-        body: JSON.stringify({
-          page,
-          total: 10
-        }),
-      });
+      const response  = await fetch(`/traive-data?total=10&page=${page}`);
       const data = await response.json();
+
       totalItems.current = data.totalItems;
       seTraiveData(processPayload(data.items));
     })();
