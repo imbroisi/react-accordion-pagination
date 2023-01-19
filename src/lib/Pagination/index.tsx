@@ -43,7 +43,7 @@ const Pagination = ({ total, onSelect }: PaginationProps) => {
       schema[3] = 4;
       schema[4] = 5;
       schema[5] = '...';
-    } else if (selected > total - 5) {
+    } else if (selected > total - 4) {
       schema[1] = '...';
       schema[2] = total - 4;
       schema[3] = total - 3;
