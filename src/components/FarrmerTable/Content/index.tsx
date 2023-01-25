@@ -7,14 +7,14 @@ import Header from "../Header";
 import Footer from "../Footer";
 
 const Content = () => {
-  const { traiveData } = useAPI();
+  const { apiData } = useAPI();
 
-  if (!traiveData || traiveData.length === 0) {
+  if (!apiData || apiData.length === 0) {
     return null;
   }
 
-  // translate traiveData to React format
-  const content = traiveData.map(({ id, itemData, subItemsData }) => {
+  // translate apiData to React format
+  const content = apiData.map(({ id, itemData, subItemsData }) => {
     return {
       id,
       item: <ItemFormatter id={id} data={itemData} />,

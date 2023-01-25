@@ -4,7 +4,7 @@ import SubitemFormatter from 'components/FarrmerTable/Content/SubitemFormatter';
 import SubitemHeader from 'components/FarrmerTable/Content/SubitemHeader';
 import Accordion from '../Accordion';
 
-const traiveData = [
+const apiData = [
   {
     id: 'f873e8be-d489-4259-8c94-417bc4f136f0',
     itemData: [
@@ -64,7 +64,7 @@ const traiveData = [
   }
 ];
 
-const content = traiveData.map(({ id, itemData, subItemsData }) => {
+const content = apiData.map(({ id, itemData, subItemsData }) => {
   return {
     id,
     item: <ItemFormatter id={id} data={itemData} />,
@@ -81,7 +81,7 @@ describe('Acordion tests', () => {
       </div>
     );
 
-    traiveData.forEach((data) => {
+    apiData.forEach((data) => {
       data.itemData.forEach((item) => {
         const text = screen.getAllByText(item);
         expect(text[0]).toBeInTheDocument();  

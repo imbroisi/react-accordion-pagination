@@ -5,7 +5,7 @@ import payload from './data/payload.json';
 const { totalItems, items } = payload;
 
 export const handlers = [
-  rest.get('/traive-data', (req, res, ctx) => {
+  rest.get('/api-data', (req, res, ctx) => {
     const page = req.url.searchParams.get('page') || '0';
     const total = req.url.searchParams.get('total') || '0';
 

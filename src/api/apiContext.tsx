@@ -3,7 +3,7 @@ import { processPayload } from "./processPayload";
 
 const APIContext = createContext({
   totalPages: -1,
-  traiveData: [{
+  apiData: [{
     id: '',
     itemData: [],
     subItemsData: [],
@@ -17,16 +17,16 @@ interface Props {
 
 const APIContextProvider = ({ children }: Props)  => {
   const [page, setPage] = useState(1);
-  const [traiveData, seTraiveData] = useState(null);
+  const [apiData, setApiData] = useState(null);
   const totalItems = useRef(-1);
   
   useEffect(() => {
     (async () => {
-      const response  = await fetch(`/traive-data?total=10&page=${page}`);
+      const response  = await fetch(`/api-data?total=10&page=${page}`);
       const data = await response.json();
 
       totalItems.current = data.totalItems;
-      seTraiveData(processPayload(data.items));
+      setApiData(processPayload(data.items));
     })();
   }, [page]);
 
@@ -37,7 +37,7 @@ const APIContextProvider = ({ children }: Props)  => {
   return (
     <APIContext.Provider
       value={{
-        traiveData: traiveData || [],
+        apiData: apiData || [],
         getNewPage,
         totalPages: totalItems.current,
       }}
