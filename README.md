@@ -1,4 +1,4 @@
-# Traive Frontend Challenge
+# Accordion and Pagination
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -12,8 +12,8 @@ AWS Amplify is the AWS service to deploy the page - see details below.
 ## Instalation and running
 
 ```bash
-git clone https://github.com/imbroisi/traive
-cd traive
+git clone https://github.com/imbroisi/react-accordion-pagination
+cd react-accordion-pagination
 npm i
 ```
 
@@ -43,7 +43,7 @@ The build is minified and the filenames include the hashes.
 ## Deployment
 
 The deployment is done automatically to AWS by [AWS Amplify](https://docs.amplify.aws/d) service.\
-Amplify is connect and watching the `main` branch in the project's [Github repository](https://github.com/imbroisi/traive), so it will enter in CI/CD process eveytime there are changes in that branch.
+Amplify is connect and watching the `main` branch in the project's [Github repository](https://github.com/imbroisi/react-accordion-pagination), so it will enter in CI/CD process eveytime there are changes in that branch.
 
 ## API mock
 
